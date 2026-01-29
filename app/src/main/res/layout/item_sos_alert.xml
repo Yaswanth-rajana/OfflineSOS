@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="4dp"
+    android:background="@drawable/bg_card"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/ivAlertIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@android:drawable/ic_dialog_alert"
+        app:tint="@color/sos_red"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvAlertTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="SOS Received!"
+        android:textColor="@color/sos_red"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivAlertIcon"
+        app:layout_constraintTop_toTopOf="@id/ivAlertIcon" />
+
+    <TextView
+        android:id="@+id/tvAlertTime"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Time: 12:30:45"
+        android:textColor="@color/text_secondary"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivAlertIcon"
+        app:layout_constraintTop_toBottomOf="@id/tvAlertTitle" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="12dp"
+        android:background="#EEEEEE"
+        app:layout_constraintTop_toBottomOf="@id/tvAlertTime" />
+
+    <TextView
+        android:id="@+id/tvAlertContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Message / Contact: ..."
+        android:textColor="@color/text_primary"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/divider" />
+
+    <TextView
+        android:id="@+id/tvAlertMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Trapped on roof"
+        android:textColor="@color/text_secondary"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/tvAlertContent" />
+
+    <LinearLayout
+        android:id="@+id/layoutCoords"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/tvAlertMessage">
+
+        <TextView
+            android:id="@+id/tvLat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Lat: 17.3850"
+            android:textColor="@color/text_primary"
+            android:background="@color/box_background"
+            android:padding="8dp"
+            android:layout_marginEnd="4dp"/>
+
+        <TextView
+            android:id="@+id/tvLon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Lon: 78.4867"
+            android:textColor="@color/text_primary"
+            android:background="@color/box_background"
+            android:padding="8dp"
+            android:layout_marginStart="4dp"/>
+    </LinearLayout>
+        
+    <TextView
+        android:id="@+id/tvAlertDistance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Distance: 15m away"
+        android:textStyle="bold"
+        android:textColor="@color/teal_700"
+        app:layout_constraintTop_toBottomOf="@id/layoutCoords" />
+
+    <Button
+        android:id="@+id/btnMarkFinished"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Mark as Finished"
+        android:backgroundTint="@color/teal_700"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvAlertDistance" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

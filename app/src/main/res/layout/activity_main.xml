@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_light"
+    tools:context=".MainActivity">
+
+    <!-- HEADER: Role Selection -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/headerContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/surface_card"
+        android:padding="16dp"
+        android:elevation="4dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvAppTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Offline SOS"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rescuer Mode"
+            android:textColor="@color/text_primary"
+            app:thumbTint="@color/teal_200"
+            app:trackTint="@color/teal_700"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- VICTIM INTERFACE -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutVictim"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="24dp"
+        android:visibility="visible"
+        app:layout_constraintTop_toBottomOf="@id/headerContainer"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/tvVictimStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ready"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:letterSpacing="0.05"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/btnSos"
+            app:layout_constraintVertical_chainStyle="packed"
+            android:layout_marginBottom="48dp"/>
+
+        <Button
+            android:id="@+id/btnSos"
+            android:layout_width="260dp"
+            android:layout_height="260dp"
+            android:background="@drawable/bg_sos_button"
+            android:text="SOS"
+            android:textColor="@color/white"
+            android:textSize="56sp"
+            android:textStyle="bold"
+            android:elevation="12dp"
+            android:stateListAnimator="@null"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvVictimStatus"
+            app:layout_constraintBottom_toTopOf="@id/etMessage"
+            android:layout_marginBottom="32dp"/>
+
+        <TextView
+            android:id="@+id/tvInstruction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/btnSos"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <EditText
+            android:id="@+id/etMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="56dp"
+            android:hint="Message / Phone (Optional)"
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_secondary"
+            android:background="@drawable/bg_card"
+            android:backgroundTint="@color/surface_card"
+            android:padding="16dp"
+            android:inputType="textCapSentences|textMultiLine"
+            android:maxLines="3"
+            android:ellipsize="end"
+            android:textAlignment="center"
+            android:elevation="2dp"
+            app:layout_constraintTop_toBottomOf="@id/btnSos"
+            app:layout_constraintBottom_toTopOf="@id/tvReassurance"
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="Autofill" />
+
+        <TextView
+            android:id="@+id/tvReassurance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Searching for rescuers..."
+            android:textAlignment="center"
+            android:padding="20dp"
+            android:background="@drawable/bg_card"
+            android:backgroundTint="@color/surface_card"
+            android:textColor="@color/text_primary"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:visibility="invisible"
+            app:layout_constraintTop_toBottomOf="@id/etMessage"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.0"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- RESCUER INTERFACE -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutRescuer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/headerContainer"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/tvRescuerStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/rescuer_status_bg"
+            android:padding="16dp"
+            android:text="Scanning for SOS signals..."
+            android:textAlignment="center"
+            android:textColor="@color/teal_200"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintTop_toBottomOf="@id/tvRescuerStatus"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Active Section -->
+                <TextView
+                    android:id="@+id/tvActiveHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="ACTIVE RESCUES"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.1"
+                    android:textColor="@color/sos_red"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="12dp"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvActiveAlerts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    android:layout_marginBottom="24dp"/>
+
+                 <TextView
+                    android:id="@+id/tvEmptyActive"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="No active distress signals"
+                    android:textAlignment="center"
+                    android:textColor="@color/text_secondary"
+                    android:padding="32dp"
+                    android:background="@drawable/bg_card"
+                    android:backgroundTint="@color/surface_card"
+                    android:visibility="gone"/>
+
+                <!-- Completed Section -->
+                <TextView
+                    android:id="@+id/tvCompletedHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="COMPLETED RESCUES"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.1"
+                    android:textColor="@color/safety_green"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="12dp"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvCompletedAlerts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"/>
+                
+                 <TextView
+                    android:id="@+id/tvEmptyCompleted"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="No completed rescues"
+                    android:textAlignment="center"
+                    android:textColor="@color/text_secondary"
+                    android:padding="32dp"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
