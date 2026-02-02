@@ -46,4 +46,3 @@ The app requires the following permissions to function:
 1.  **Device A (Rescuer):** Toggle the switch to "Rescuer Active". The status will change to "Listen mode".
 2.  **Device B (Victim):** Enter a message (optional) and press the **SOS** button.
 3.  **Result:** Device A will receive an alert with Device B's location and distance. Device B will receive a confirmation spanning "HELP IS ON THE WAY".
-4.  
